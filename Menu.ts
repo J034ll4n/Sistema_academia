@@ -1,7 +1,7 @@
-import { ProdutoController } from '../src/controller/ProdutoController';
-import { colors } from "../src/util/Cores";
-import { Medicamento } from "../src/model/Medicamento";
-import { Cosmetico } from '../src/model/Cosmetico';
+import { Cosmetico } from './src/model/Cosmetico';
+import { Medicamento } from './src/model/Medicamento';
+import { colors } from './src/util/Cores';
+import { ProdutoController } from './src/controller/ProdutoController';
 import readlinesync from "readline-sync";
 
 
@@ -10,17 +10,10 @@ export function main() {
 
     let opcao: number, id: number, tipo: number, preco: number;
     let nome: string, generico: string, fragrancia: string;
-    let TipoProduto = ['Medicamento, Cosmetico'];
+    let TipoProduto = ['Medicamento', 'Cosmetico'];
 
     const produtoController: ProdutoController = new ProdutoController();
 
-
-
-    produtoController.cadastrar(new Medicamento(produtoController.gerarId(),
-        "Dipirona", 1, 20.00, "Paracetamol 750mg"));
-
-    produtoController.cadastrar(new Cosmetico(produtoController.gerarId(),
-     "Rimel", 2, 15.00, "Rosas"));
 
 
     while (true) {
@@ -62,7 +55,7 @@ export function main() {
                     "\n\nCriar Produto\n\n", colors.reset);
 
                 nome = readlinesync.question("Digite o Nome do Produto: ");
-                tipoipo = readlinesync.keyInSelect(TipoProduto, "", { cancel: false }) + 1;
+                tipo = readlinesync.keyInSelect(TipoProduto, "", { cancel: false }) + 1;
                 preco = readlinesync.questionFloat("Digite o preco: ");
 
                 switch (tipo) {
